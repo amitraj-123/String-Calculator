@@ -24,4 +24,18 @@ describe('testing add method', () => {
      let negativeArr = intArg.filter(x => x < 0);
      expect(() => {add(negativeNumberStringArg);}).toThrow(`Negatives are not allowed: ${negativeArr.join(',')}`);
    });
+   it('should throw error for multiple negative number passed in string', () => {
+    const negativeNumberStringArg= "-1,-2";
+     let intArg = negativeNumberStringArg.split(',').map(x => parseInt(x));
+     let negativeArr = intArg.filter(x => x < 0);
+     expect(() => {add(negativeNumberStringArg);}).toThrow(`Negatives are not allowed: ${negativeArr.join(',')}`);
+   });
+   it('should throw error for negative number evenif delimiter is other than comma in string', () => {
+    const negativeNumberStringArg= "//;-1;-2";
+    const indexOfBackSlash=negativeNumberStringArg.indexOf("//");
+    const delimiterUsed=(indexOfBackSlash > -1)?negativeNumberStringArg.charAt(indexOfBackSlash+2):",";
+     let intArg = negativeNumberStringArg.split(delimiterUsed).map(x => parseInt(x));
+     let negativeArr = intArg.filter(x => x < 0);
+     expect(() => {add(negativeNumberStringArg);}).toThrow(`Negatives are not allowed: ${negativeArr.join(',')}`);
+   });
 });
