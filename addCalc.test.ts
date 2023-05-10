@@ -18,4 +18,10 @@ describe('testing add method', () => {
   it('should give the sum for delimiter other than comma in string', () => {
     expect(add("//;1\n2;3")).toBe(6);
   });
+  it('should throw error for negative number passed in string', () => {
+    const negativeNumberStringArg= "1,-2";
+     let intArg = negativeNumberStringArg.split(',').map(x => parseInt(x));
+     let negativeArr = intArg.filter(x => x < 0);
+     expect(() => {add(negativeNumberStringArg);}).toThrow(`Negatives are not allowed: ${negativeArr.join(',')}`);
+   });
 });
