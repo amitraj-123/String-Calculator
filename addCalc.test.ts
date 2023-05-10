@@ -9,4 +9,7 @@ describe('testing add method', () => {
   it('should give the number itself for one number only in string', () => {
     expect(add("1")).toBe(1);
   });
+  it('should give the sum for more than one number passed in string', () => {
+    expect(add("1,2")).toBe(3);
+  });
 });
