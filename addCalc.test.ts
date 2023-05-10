@@ -15,4 +15,7 @@ describe('testing add method', () => {
   it('should give the sum for newline between numbers passed in string', () => {
     expect(add("1\n2,3")).toBe(6);
   });
+  it('should give the sum for delimiter other than comma in string', () => {
+    expect(add("//;1\n2;3")).toBe(6);
+  });
 });
