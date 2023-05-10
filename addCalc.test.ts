@@ -12,4 +12,7 @@ describe('testing add method', () => {
   it('should give the sum for more than one number passed in string', () => {
     expect(add("1,2")).toBe(3);
   });
+  it('should give the sum for newline between numbers passed in string', () => {
+    expect(add("1\n2,3")).toBe(6);
+  });
 });
